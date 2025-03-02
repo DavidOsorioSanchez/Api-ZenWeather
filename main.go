@@ -2,11 +2,8 @@ package main
 
 import "github.com/gin-gonic/gin"
 
-// To install CompileDaemon, use the following command in your terminal:
-// go get github.com/githubnemo/CompileDaemon
-
 // To run this file with CompileDaemon, use the following command in your terminal:
-// CompileDaemon -command="./main"
+// CompileDaemon -command="./MainApp"
 func main() {
 	root := gin.Default() //inicializa la aplicacion con Gin
 
