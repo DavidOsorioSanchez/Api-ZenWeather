@@ -1,9 +1,19 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"Api-ZenWeather/MainApp/database"
+	"Api-ZenWeather/MainApp/initial"
+
+	"github.com/gin-gonic/gin"
+)
 
 // To run this file with CompileDaemon, use the following command in your terminal:
 // CompileDaemon -command="./MainApp"
+func init() {
+	initial.LoadEnvValues()
+	database.ConnectToDB()
+}
+
 func main() {
 	root := gin.Default() //inicializa la aplicacion con Gin
 
