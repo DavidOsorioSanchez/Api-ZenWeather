@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Dpc7IIfNH7wy7PLDxMXQ3C488u4BaK22ji9wVM51L6A=",
+  "Source": "Api-ZenWeather",
+  "BasePath": "_content/Api-ZenWeather",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

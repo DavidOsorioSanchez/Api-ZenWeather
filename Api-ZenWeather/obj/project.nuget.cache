@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "FG6K/W1WS5g=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\David Osorio\\Documents\\ZenWeatherApp\\Api-ZenWeather\\Api-ZenWeather\\Api-ZenWeather.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\David Osorio\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.2\\microsoft.aspnetcore.openapi.9.0.2.nupkg.sha512",
+    "C:\\Users\\David Osorio\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
