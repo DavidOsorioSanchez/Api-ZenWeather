@@ -1,6 +1,8 @@
-﻿using Api_ZenWeather.Model;
+﻿using Api_ZenWeather.Data;
+using Api_ZenWeather.Model;
 using Api_ZenWeather.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api_ZenWeather.Controllers
 {
@@ -9,24 +11,56 @@ namespace Api_ZenWeather.Controllers
     [ApiController]
     public class UserController : Controller, IUser
     {
-        public Task<ActionResult<User>> AddUser(User newUser)
+        private readonly UserDBContext _dbContext;
+
+        public UserController(UserDBContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public Task<IActionResult> DeleteUser(long Id)
+        [HttpPost]
+        public async Task<ActionResult<User>> AddUser(User newUser)
         {
-            throw new NotImplementedException();
+            if (newUser is null)
+                return BadRequest();
+
+            _dbContext.userdb.Add(newUser);
+            await _dbContext.SaveChangesAsync();
+            return Ok(newUser);
         }
 
-        public Task<ActionResult<User>> GetUser()
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteUser(Guid Id)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.userdb.FindAsync(Id);
+            if (user is null)
+                return NotFound();
+
+            _dbContext.userdb.Remove(user);
+            await _dbContext.SaveChangesAsync();
+            return NoContent();
         }
 
-        public Task<IActionResult> UpdateUser(long Id, User UserActual)
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<User>> GetUser(Guid Id)
         {
-            throw new NotImplementedException();
+            var user = await _dbContext.userdb.FindAsync(Id);
+            if (user is null)
+                return NotFound();
+            return Ok(user);
+        }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> UpdateUser(Guid Id, User UserActual)
+        {
+            var user = await _dbContext.userdb.FindAsync(Id);
+            if (user is null)
+                return NotFound();
+
+
+            user.Location = UserActual.Location;
+            await _dbContext.SaveChangesAsync();
+            return NoContent();
         }
     }
 }

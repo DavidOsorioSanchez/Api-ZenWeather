@@ -2,9 +2,9 @@
 
 namespace Api_ZenWeather.Model
 {
-    public class User
+    public sealed class User
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "La ubicación es requerida.")]
         public string Location { get; set; }
